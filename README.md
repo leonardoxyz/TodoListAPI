@@ -38,16 +38,6 @@ Agora que a aplicação está em execução, você pode começar a usar a API pa
 
 Certifique-se de usar o Postman ou outra ferramenta semelhante para fazer solicitações à API.
 
-## Contribuição
-
-Sinta-se à vontade para contribuir com melhorias para este projeto. Basta seguir estas etapas:
-
-1. Faça um fork deste repositório.
-2. Crie uma nova branch com a sua contribuição: `git checkout -b minha-contribuicao`.
-3. Faça suas alterações e adicione mensagens de commit significativas.
-4. Envie suas alterações para o seu fork: `git push origin minha-contribuicao`.
-5. Abra um pull request para que suas alterações sejam revisadas.
-
 ## Licença
 
 Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter detalhes.
