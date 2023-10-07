@@ -42,25 +42,13 @@ namespace TodoListAPI.Controllers
             return await _context.TodoItems.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItem>> GetTodoItem(Guid id)
-        {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            return todoItem;
-        }
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTodoItem(Guid id, TodoItem updatedItem)
         {
-            if (id != updatedItem.Id)
+
+            if (!ModelState.IsValid)
             {
-                return BadRequest("O ID fornecido não corresponde ao ID do item.");
+                return BadRequest(ModelState);
             }
 
             var existingItem = await _context.TodoItems.FindAsync(id);
@@ -70,7 +58,6 @@ namespace TodoListAPI.Controllers
                 return NotFound("Item não encontrado.");
             }
 
-            // Atualize apenas as propriedades relevantes
             existingItem.Title = updatedItem.Title;
             existingItem.IsComplete = updatedItem.IsComplete;
 
@@ -91,6 +78,19 @@ namespace TodoListAPI.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TodoItem>> GetTodoItem(Guid id)
+        {
+            var todoItem = await _context.TodoItems.FindAsync(id);
+
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+
+            return todoItem;
         }
 
         [HttpDelete("{id}")]
